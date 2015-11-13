@@ -9,6 +9,7 @@
     "sourceMap": true
   },
   "files": [
+    "tray.ts",
     "singleton-window.ts",
     "main.ts",
     "lib.d.ts"

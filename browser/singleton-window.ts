@@ -15,6 +15,7 @@ export default class SingletonWindow extends EventEmitter {
                 height: 1000,
                 frame: false,
             });
+        this.native_window.setVisibleOnAllWorkspaces(true);
         this.native_window.once('closed', () => {
             if (this.hotkey) {
                 GlobalShortcut.unregister(this.hotkey);

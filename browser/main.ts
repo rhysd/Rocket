@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as app from 'app';
 import SingletonWindow from './singleton-window';
+import setupTray from './tray';
 
 const index_html = 'file://' + path.join(__dirname, '..', '..', 'index.html');
 
@@ -16,4 +17,6 @@ app.on('ready', () => {
 
     w.loadUrl(index_html);
     w.registerHotKey('CmdOrCtrl+Return')
+
+    setupTray(w);
 });
