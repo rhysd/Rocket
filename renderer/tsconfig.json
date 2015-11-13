@@ -6,10 +6,12 @@
     "outDir": "./out",
     "noImplicitAny": true,
     "target": "es5",
-    "sourceMap": true
+    "sourceMap": true,
+    "jsx": "react"
   },
   "files": [
-    "index.ts",
+    "components/app.tsx",
+    "index.tsx",
     "lib.d.ts"
   ]
 }

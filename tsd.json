@@ -16,6 +16,12 @@
     },
     "github-electron/electron-prebuilt.d.ts": {
       "commit": "4f7b7e01d3a9622bfab0bef469e169529e60c66b"
+    },
+    "react/react.d.ts": {
+      "commit": "4f7b7e01d3a9622bfab0bef469e169529e60c66b"
+    },
+    "react/react-dom.d.ts": {
+      "commit": "4f7b7e01d3a9622bfab0bef469e169529e60c66b"
     }
   }
 }
