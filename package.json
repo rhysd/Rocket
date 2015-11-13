@@ -1,0 +1,30 @@
+{
+  "name": "rocket-cli",
+  "productName": "Rocket",
+  "version": "0.0.0",
+  "description": "Alfred-like workflow app",
+  "main": "build/browser/main.js",
+  "bin": {
+    "rocket": "node build/cli/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhysd/Rocket.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "launcher",
+    "searcher",
+    "Electron"
+  ],
+  "author": "rhysd <lin90162@yahoo.co.jp>",
+  "license": "MIT",
+  "devDependencies": {
+    "asar": "^0.8.3",
+    "browserify": "^12.0.1",
+    "electron-prebuilt": "^0.34.3",
+    "typescript": "^1.6.2"
+  }
+}
