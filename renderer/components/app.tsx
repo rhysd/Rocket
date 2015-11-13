@@ -6,6 +6,7 @@ export default class App extends React.Component<{}, {}> {
         return (
             <div className="root">
                 <Input/>
+                <div className="tmp" />
             </div>
         );
     }

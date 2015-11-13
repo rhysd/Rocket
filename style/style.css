@@ -1,6 +1,7 @@
 html,body {
   width: 100%;
   height: 100%;
+  font-size: 12px;
 }
 
 body {
@@ -14,14 +15,24 @@ body {
 }
 
 .root {
-  width: 100%;
+  margin: 16px;
+  width: calc(100% - 32px);
   height: 100%;
   display: flex;
 }
 
 .search-input {
   width: calc(100% - 16px);
-  height: 2em;
   margin: 8px;
+  height: 2em;
   flex: none;
+  font-size: 20px;
+  -webkit-appearance: textfield;
+  box-sizing: border-box;
 }
+
+.search-input::-webkit-search-cancel-button,
+.search-input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+

@@ -52,6 +52,10 @@ task :run do
   sh "node #{ROOT}/build/cli/main.js"
 end
 
+task :debug do
+  sh "NODE_DEBUG=rocket node #{ROOT}/build/cli/main.js"
+end
+
 task :default => %i(build run)
 
 task :asar => %i(build) do

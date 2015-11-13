@@ -23,7 +23,10 @@ export default class SingletonWindow extends EventEmitter {
             this.native_window = null;
             this.emit('closed');
         });
-        this.native_window.on('blur', () => this.hide());
+
+        if (!global.debug) {
+            this.native_window.on('blur', () => this.hide());
+        }
 
         this.hotkey = null;
     }
@@ -31,6 +34,7 @@ export default class SingletonWindow extends EventEmitter {
     loadUrl(url: string) {
         this.native_window.webContents.once('dom-ready', () => this.emit('dom-ready'));
         this.native_window.loadUrl(url);
+        this.native_window.center();
     }
 
     getWebContents() {
