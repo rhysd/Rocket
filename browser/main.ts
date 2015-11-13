@@ -18,7 +18,7 @@ app.on('ready', () => {
     w.once('dom-ready', () => w.getWebContents().openDevTools({detach: true}))
 
     w.loadUrl(index_html);
-    w.registerHotKey('CmdOrCtrl+Return')
+    w.registerHotKey('Ctrl+Space')
 
     setupTray(w);
 });

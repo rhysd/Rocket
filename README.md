@@ -9,7 +9,7 @@ This aims:
 - Cross Platform:  The same experience in OS X, Windows, and Linux.
 - Powerful command line integration
 
-## Architecture
+## Architecture Plan
 
 - Show hidden title bar, toggle with hot key, control app by menubar item.
 - App consists of 'Body' (main renderer process) and 'Boosters' (plugins).

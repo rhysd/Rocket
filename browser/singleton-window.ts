@@ -10,11 +10,7 @@ export default class SingletonWindow extends EventEmitter {
         super();
 
         this.native_window
-            = new BrowserWindow({
-                width: 600,
-                height: 1000,
-                frame: false,
-            });
+            = new BrowserWindow(options);
         this.native_window.setVisibleOnAllWorkspaces(true);
         this.native_window.once('closed', () => {
             if (this.hotkey) {
