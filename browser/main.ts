@@ -1,21 +1,19 @@
 import * as path from 'path';
 import * as app from 'app';
-import * as BrowserWindow from 'browser-window';
+import SingletonWindow from './singleton-window';
 
 const index_html = 'file://' + path.join(__dirname, '..', '..', 'index.html');
 
 app.on('ready', () => {
-    let win = new BrowserWindow({
+    const w = new SingletonWindow({
         width: 600,
         height: 1000,
-        'title-bar-style': 'hidden',
+        frame: false,
     });
 
-    win.on('closed', () => {
-        win = null;
-        app.quit();
-    });
+    w.once('closed', () => app.quit());
+    w.once('dom-ready', () => w.getWebContents().openDevTools({detach: true}))
 
-    win.webContents.once('dom-ready', () => win.webContents.openDevTools({detach: true}));
-    win.loadUrl(index_html);
+    w.loadUrl(index_html);
+    w.registerHotKey('CmdOrCtrl+Return')
 });
