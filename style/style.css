@@ -61,25 +61,13 @@ body {
   height: calc(100% - 40px);
   padding: 20px;
   display: flex;
+  flex-direction: column;
   background-color: #ffffff;
   opacity: 1;
 }
 
-.search-input {
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-  height: 2em;
-  flex: none;
-  font-size: 20px;
-  outline: none;
-  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
-  -webkit-appearance: textfield;
-  box-sizing: border-box;
-}
-
-.search-input::-webkit-search-cancel-button,
-.search-input::-webkit-search-decoration {
-  -webkit-appearance: none;
+.secondary {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
