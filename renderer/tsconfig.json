@@ -10,7 +10,12 @@
     "jsx": "react"
   },
   "files": [
+    "components/candidates.tsx",
+    "components/input.tsx",
     "components/app.tsx",
+    "booster_loader.ts",
+    "booster.ts",
+    "body.ts",
     "index.tsx",
     "lib.d.ts"
   ]

@@ -6,3 +6,6 @@ declare module NodeJS {
     }
 }
 
+interface String {
+    startsWith(searchStr: string, pos?: number): boolean;
+}
