@@ -26,6 +26,7 @@ body {
   height: 20px;
   width: 100%;
   flex: none;
+  -webkit-app-region: drag;
 }
 .frame-bottom {
   background-color: #dddddd;
@@ -35,6 +36,7 @@ body {
   height: 20px;
   width: 100%;
   flex: none;
+  -webkit-app-region: drag;
 }
 .frame-wrapper-inner {
   width: 100%;
@@ -48,6 +50,7 @@ body {
   height: auto;
   width: 20px;
   flex: none;
+  -webkit-app-region: drag;
 }
 
 .app {

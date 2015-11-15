@@ -10,50 +10,50 @@ export default class Candidates extends React.Component<{}, {}> {
             <List>
                 <ListItem
                     leftAvatar={<Avatar src="resource/image/rocket.png" />}
-                    primaryText="Brendan Lim"
+                    primaryText="main.ts"
                     secondaryText={
                     <p className="secondary">
-                        I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?
+                        ~/Dev/github.com/rhysd/Rocket/browser/main.ts
                     </p>
                     }
                     secondaryTextLines={2} />
                 <ListDivider inset={true} />
                 <ListItem
                     leftAvatar={<Avatar src="resource/image/rocket.png" />}
-                    primaryText="me, Scott, Jennifer"
+                    primaryText="singleton-window.ts"
                     secondaryText={
                     <p className="secondary">
-                        Wish I could come, but I&apos;m out of town this weekend.
+                        ~/Dev/github.com/rhysd/Rocket/browser/singleton-window.ts
                     </p>
                     }
                     secondaryTextLines={2} />
                 <ListDivider inset={true} />
                 <ListItem
                     leftAvatar={<Avatar src="resource/image/rocket.png" />}
-                    primaryText="Grace Ng"
+                    primaryText="tray.ts"
                     secondaryText={
                     <p className="secondary">
-                        Do you have any Paris recs? Have you ever been?
+                        ~/Dev/github.com/rhysd/Rocket/browser/tray.ts
                     </p>
                     }
                     secondaryTextLines={2} />
                 <ListDivider inset={true} />
                 <ListItem
                     leftAvatar={<Avatar src="resource/image/rocket.png" />}
-                    primaryText="Kerem Suer"
+                    primaryText="tsconfig.json"
                     secondaryText={
                     <p className="secondary">
-                        Do you have any ideas what we can get Heidi for her birthday? How about a pony?
+                        ~/Dev/github.com/rhysd/Rocket/browser/tsconfig.json
                     </p>
                     }
                     secondaryTextLines={2} />
                 <ListDivider inset={true} />
                 <ListItem
                     leftAvatar={<Avatar src="resource/image/rocket.png" />}
-                    primaryText="Raquel Parrado"
+                    primaryText="lib.d.ts"
                     secondaryText={
                     <p className="secondary">
-                        We should eat this: grated squash. Corn and tomatillo tacos.
+                        ~/Dev/github.com/rhysd/Rocket/browser/lib.d.ts
                     </p>
                     }
                     secondaryTextLines={2} />

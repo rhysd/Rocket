@@ -9,6 +9,8 @@ This aims:
 - Cross Platform:  The same experience in OS X, Windows, and Linux.
 - Powerful command line integration
 
+![current progress](https://raw.githubusercontent.com/rhysd/ss/master/Rocket/progress.png)
+
 ## Architecture Plan
 
 - Show hidden title bar, toggle with hot key, control app by menubar item.
