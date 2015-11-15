@@ -38,7 +38,6 @@ body {
 }
 .frame-wrapper-inner {
   width: 100%;
-  height: calc(100% - 40px);
   flex: auto;
   display: flex;
   flex-direction: row;
@@ -46,19 +45,17 @@ body {
 .frame-side {
   background-color: #dddddd;
   opacity: 0.6;
-  height: 100%;
+  height: auto;
   width: 20px;
   flex: none;
 }
 
 .app {
   width: calc(100% - 40px);
-  height: 100%;
 }
 
 .root {
   width: calc(100% - 40px);
-  height: calc(100% - 40px);
   padding: 20px;
   display: flex;
   flex-direction: column;
