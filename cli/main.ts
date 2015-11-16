@@ -11,6 +11,9 @@ if (detached) {
 }
 
 argv.unshift(join(__dirname, '..', '..'));
+if (process.platform === 'linux') {
+    argv.push('--enable-transparent-visuals');
+}
 
 if (detached) {
     spawn(electron, argv, {
