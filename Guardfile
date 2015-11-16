@@ -21,4 +21,8 @@ guard :shell do
   watch %r[^cli/.+\.ts$] do |m|
     build('cli', m[0])
   end
+
+  watch %r[^child/.+\.ts$] do |m|
+    build('child', m[0])
+  end
 end

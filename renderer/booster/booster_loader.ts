@@ -5,10 +5,11 @@ import Booster from './booster';
 
 const app: GitHubElectron.App = global.require('remote').require('app');
 
-const DEFAULT_LOADEER_PATHS = [
-    app.getAppPath(),
-    app.getPath('userData'),
-];
+const DEFAULT_LOADEER_PATHS
+    = global.module.paths
+            .concat([path.join(app.getPath('userData'), 'node_modules')])
+            .filter(p => path.isAbsolute(p));
+console.log(DEFAULT_LOADEER_PATHS);
 
 export default class BoosterLoader {
     load_paths: string[];
@@ -24,12 +25,11 @@ export default class BoosterLoader {
     }
 
     loadAllFrom(load_path: string): Booster[] {
-        const module_path = path.join(load_path, 'node_modules');
         try {
             return fs
-                .readdirSync(module_path)
+                .readdirSync(load_path)
                 .filter(entry => entry.startsWith('rocket-booster-'))
-                .map(pkg_entry => this.loadFrom(path.join(module_path, pkg_entry)));
+                .map(pkg_entry => this.loadFrom(path.join(load_path, pkg_entry)));
         } catch(err) {
             return [];
         }

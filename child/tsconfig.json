@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outDir": "../build/child/",
+    "noImplicitAny": true,
+    "target": "es5",
+    "sourceMap": true
+  },
+  "files": [
+    "booster_engine.ts"
+  ]
+}

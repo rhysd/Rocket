@@ -23,4 +23,3 @@ app.on('ready', () => {
     setupTray(w);
 });
 
-console.log(process.env['NODE_DEBUG']);

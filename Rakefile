@@ -46,7 +46,11 @@ task :build_cli_src do
   sh "#{BIN}/tsc -p #{ROOT}/cli"
 end
 
-task :build => %i(dep build_browser_src build_renderer_src build_cli_src)
+task :build_child_src do
+  sh "#{BIN}/tsc -p #{ROOT}/child"
+end
+
+task :build => %i(dep build_browser_src build_renderer_src build_cli_src build_child_src)
 
 task :run do
   sh "node #{ROOT}/build/cli/main.js"
