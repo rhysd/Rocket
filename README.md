@@ -1,3 +1,8 @@
+<p align="center"><strong>This repository is heavily under construction.</strong></p>
+
+Rocket
+======
+
 This is a launcher&searcher like Alfred app.
 
 This is a graphical interface to show the list of something, search items incrementally, and launch various actions.
