@@ -1,4 +1,3 @@
-import * as app from 'app';
 import BoosterLoader from './booster/booster_loader';
 
 export default class Body {

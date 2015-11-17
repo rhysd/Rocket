@@ -5,6 +5,7 @@ import SingletonWindow from './singleton-window';
 import {join} from 'path';
 
 function buildTrayMenu(win: SingletonWindow) {
+    'use strict';
     const template = [
         {
             label: 'Toggle Window',
@@ -23,6 +24,7 @@ function buildTrayMenu(win: SingletonWindow) {
 }
 
 export default function setupTray(win: SingletonWindow) {
+    'use strict';
     const t = new Tray(join(__dirname, '..', '..', 'resource', 'image', 'tray-icon.png'));
     t.setToolTip('Rocket');
     t.setContextMenu(buildTrayMenu(win));

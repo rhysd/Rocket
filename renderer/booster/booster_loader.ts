@@ -30,7 +30,7 @@ export default class BoosterLoader {
                 .readdirSync(load_path)
                 .filter(entry => entry.startsWith('rocket-booster-'))
                 .map(pkg_entry => this.loadFrom(path.join(load_path, pkg_entry)));
-        } catch(err) {
+        } catch (err) {
             return [];
         }
     }
