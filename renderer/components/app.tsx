@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {StateType} from '../reducers';
 import Input from './input';
 import Candidates from './candidates';
-import {ActionType} from '../actions';
+import {ActionType, } from '../actions';
 
 interface Props {
-    dispatch?: (action: ActionType) => void;
+    dispatch?: (action: ActionType | Function) => void;
 }
 
 class App extends React.Component<Props, {}> {
@@ -14,7 +14,7 @@ class App extends React.Component<Props, {}> {
         return (
             <div className="root">
                 <Input/>
-                <Candidates/>
+                <Candidates dispatch={this.props.dispatch}/>
             </div>
         );
     }

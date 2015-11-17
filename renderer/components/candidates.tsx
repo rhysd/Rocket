@@ -3,8 +3,19 @@ import List = require('material-ui/lib/lists/list');
 import ListItem = require('material-ui/lib/lists/list-item');
 import ListDivider = require('material-ui/lib/lists/list-divider');
 import Avatar = require('material-ui/lib/avatar');
+import {adjustWindowToContent} from '../actions';
 
-export default class Candidates extends React.Component<{}, {}> {
+interface Props {
+    dispatch?: Redux.Dispatch;
+}
+
+export default class Candidates extends React.Component<Props, {}> {
+    componentDidUpdate(prevProps: Props, prevState: {}) {
+        // TODO:
+        // Only when number of list items is changed, adjust window size to content.
+        this.props.dispatch(adjustWindowToContent());
+    }
+
     render() {
         return (
             <List>

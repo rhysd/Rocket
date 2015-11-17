@@ -14,5 +14,7 @@ export function adjustWindowToContentSync() {
 }
 
 export function adjustWindowToContent() {
-    return (dispatch: Redux.Dispatch) => dispatch(adjustWindowToContentSync());
+    return (dispatch: Redux.Dispatch) => {
+        setImmediate(() => dispatch(adjustWindowToContentSync()));
+    };
 }
