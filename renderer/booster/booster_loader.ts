@@ -9,7 +9,6 @@ const DEFAULT_LOADEER_PATHS
     = global.module.paths
             .concat([path.join(app.getPath('userData'), 'node_modules')])
             .filter(p => path.isAbsolute(p));
-console.log(DEFAULT_LOADEER_PATHS);
 
 export default class BoosterLoader {
     load_paths: string[];
@@ -21,7 +20,8 @@ export default class BoosterLoader {
     }
 
     loadFrom(pkg_path: string) {
-        return new Booster(pkg_path);
+        const booster_name = path.basename(pkg_path).slice('rocket-booster-'.length);
+        return new Booster(pkg_path, booster_name);
     }
 
     loadAllFrom(load_path: string): Booster[] {

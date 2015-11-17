@@ -1,18 +1,29 @@
 import BoosterLoader from './booster/booster_loader';
+import Booster from './booster/booster';
 
 export default class Body {
     loader: BoosterLoader;
-    boosters: any[];
+    boosters: Booster[];
 
     constructor(extra_load_paths: string[] = []) {
         this.loader = new BoosterLoader(extra_load_paths);
-        this.loader.loadAll().then((boosters: any) => {
+        this.loader.loadAll().then((boosters: Booster[]) => {
+            for (const b of boosters) {
+                b.on('query-result', this.updateCandidates.bind(this, b))
+            }
             this.boosters = boosters;
             console.log(boosters);
         });
     }
 
-    query(input: string) {
+    updateCandidates(booster: Booster, result: BoosterProcessQueryResult) {
+        console.log(`Result received from '${booster.name}':`, result);
         // TODO
+    }
+
+    query(input: string) {
+        for (const b of this.boosters) {
+            b.sendQuery(input);
+        }
     }
 }

@@ -16,11 +16,6 @@ interface String {
     startsWith(searchStr: string, pos?: number): boolean;
 }
 
-interface BoosterProcessMessage {
-    kind: string;
-    input?: string;
-}
-
 interface QueryResultCandidate {
     primaryText: string;
     secondaryText?: string;
@@ -30,4 +25,10 @@ interface QueryResultCandidate {
 interface BoosterProcessQueryResult {
     input: string;
     candidates: QueryResultCandidate[];
+}
+
+interface BoosterProcessMessage {
+    kind: string;
+    input?: string;
+    result?: BoosterProcessQueryResult;
 }

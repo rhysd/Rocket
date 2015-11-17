@@ -4,6 +4,7 @@ import SingletonWindow from './singleton-window';
 import setupTray from './tray';
 
 const index_html = 'file://' + path.join(__dirname, '..', '..', 'index.html');
+global.debug = (process.env.NODE_DEBUG || '').indexOf('rocket') !== -1;
 
 app.on('ready', () => {
     const w = new SingletonWindow({
