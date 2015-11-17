@@ -1,8 +1,15 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
+import {StateType} from '../reducers';
 import Input from './input';
 import Candidates from './candidates';
+import {ActionType} from '../actions';
 
-export default class App extends React.Component<{}, {}> {
+interface Props {
+    dispatch?: (action: ActionType) => void;
+}
+
+class App extends React.Component<Props, {}> {
     render() {
         return (
             <div className="root">
@@ -12,3 +19,9 @@ export default class App extends React.Component<{}, {}> {
         );
     }
 }
+
+function select(state: StateType) {
+    return {};
+}
+
+export default connect(select)(App);

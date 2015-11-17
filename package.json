@@ -28,8 +28,13 @@
     "typescript": "^1.6.2"
   },
   "dependencies": {
+    "immutable": "^3.7.5",
     "material-ui": "^0.13.2",
+    "object-assign": "^4.0.1",
     "react": "^0.14.2",
-    "react-dom": "^0.14.2"
+    "react-dom": "^0.14.2",
+    "react-redux": "^4.0.0",
+    "redux": "^3.0.4",
+    "redux-thunk": "^1.0.0"
   }
 }

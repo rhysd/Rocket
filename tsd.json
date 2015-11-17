@@ -28,6 +28,15 @@
     },
     "es6-promise/es6-promise.d.ts": {
       "commit": "aed176536a202b9a2475ce1989ea6d2d0226a185"
+    },
+    "redux/redux.d.ts": {
+      "commit": "c560ba6f0f55ce6f50e9d06e37b5bc0e2b9117b0"
+    },
+    "react-redux/react-redux.d.ts": {
+      "commit": "c560ba6f0f55ce6f50e9d06e37b5bc0e2b9117b0"
+    },
+    "object-assign/object-assign.d.ts": {
+      "commit": "c560ba6f0f55ce6f50e9d06e37b5bc0e2b9117b0"
     }
   }
 }

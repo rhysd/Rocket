@@ -1,11 +1,19 @@
 /// <reference path="../typings/tsd.d.ts" />
+/// <reference path="../node_modules/immutable/dist/immutable.d.ts" />
 
 declare namespace NodeJS {
     interface Global {
         module: NodeModule;
         require(m: string): any;
     }
+}
 
+// DefinitelyTyped/redux-thunk/redux-thunk.d.ts is broken.
+declare module "redux-thunk" {
+    import { Middleware } from 'redux';
+    interface Thunk extends Middleware { }
+    var thunk: Thunk;
+    export = thunk;
 }
 
 interface NodeModule {
@@ -32,3 +40,4 @@ interface BoosterProcessMessage {
     input?: string;
     result?: BoosterProcessQueryResult;
 }
+
