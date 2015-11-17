@@ -1,20 +1,39 @@
 
 export enum Kind {
-    AdjustWindowToContent
+    AdjustWindowToContent,
+    EmitQuery,
+    ReceiveQueryResult,
 };
 
 export interface ActionType {
     type: Kind;
-}
-
-export function adjustWindowToContentSync() {
-    return {
-        type: Kind.AdjustWindowToContent
-    };
+    input?: string;
+    booster_name?: string;
+    candidates?: Candidate[];
 }
 
 export function adjustWindowToContent() {
     return (dispatch: Redux.Dispatch) => {
-        setImmediate(() => dispatch(adjustWindowToContentSync()));
+        setImmediate(() => dispatch({
+            type: Kind.AdjustWindowToContent
+        }));
+    };
+}
+
+export function emitQuery(input: string) {
+    return (dispatch: Redux.Dispatch) => {
+        setImmediate(() => dispatch({
+            type: Kind.EmitQuery,
+            input,
+        }));
+    };
+}
+
+export function receiveQueryResult(booster_name: string, input: string, candidates: Candidate[]) {
+    return {
+        type: Kind.ReceiveQueryResult,
+        booster_name,
+        input,
+        candidates,
     };
 }

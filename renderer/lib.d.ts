@@ -24,7 +24,7 @@ interface String {
     startsWith(searchStr: string, pos?: number): boolean;
 }
 
-interface QueryResultCandidate {
+interface Candidate {
     primaryText: string;
     secondaryText?: string;
     iconPath?: string;
@@ -32,7 +32,7 @@ interface QueryResultCandidate {
 
 interface BoosterProcessQueryResult {
     input: string;
-    candidates: QueryResultCandidate[];
+    candidates: Candidate[];
 }
 
 interface BoosterProcessMessage {

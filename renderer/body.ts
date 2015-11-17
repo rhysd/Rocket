@@ -1,5 +1,6 @@
 import BoosterLoader from './booster/booster_loader';
 import Booster from './booster/booster';
+import {receiveQueryResult} from './actions';
 
 export default class Body {
     loader: BoosterLoader;
@@ -18,7 +19,7 @@ export default class Body {
 
     updateCandidates(booster: Booster, result: BoosterProcessQueryResult) {
         console.log(`Result received from '${booster.name}':`, result);
-        // TODO
+        receiveQueryResult(booster.name, result.input, result.candidates);
     }
 
     query(input: string) {

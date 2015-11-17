@@ -6,69 +6,36 @@ import Avatar = require('material-ui/lib/avatar');
 import {adjustWindowToContent} from '../actions';
 
 interface Props {
-    dispatch?: Redux.Dispatch;
+    dispatch: Redux.Dispatch;
+    candidates: Candidate[];
 }
 
 export default class Candidates extends React.Component<Props, {}> {
     componentDidUpdate(prevProps: Props, prevState: {}) {
         // TODO:
         // Only when number of list items is changed, adjust window size to content.
+        // this.props.dispatch(adjustWindowToContent());
+        console.log('<Candidates> updated!');
+    }
+    componentDidMount() {
         this.props.dispatch(adjustWindowToContent());
     }
 
+    renderListItem(candidate: Candidate, key: string) {
+        const avatar_src = candidate.iconPath || 'resource/image/rocket.png';
+        const props = {
+            key,
+            leftAvatar: <Avatar src={avatar_src}/>,
+            primaryText: candidate.primaryText,
+            secondaryText: <p className="secondary">{candidate.secondaryText}</p>,
+        };
+        return <ListItem {...props}/>;
+    }
+
     render() {
-        return (
-            <List>
-                <ListItem
-                    leftAvatar={<Avatar src="resource/image/rocket.png" />}
-                    primaryText="main.ts"
-                    secondaryText={
-                    <p className="secondary">
-                        ~/Dev/github.com/rhysd/Rocket/browser/main.ts
-                    </p>
-                    }
-                    secondaryTextLines={2} />
-                <ListDivider inset={true} />
-                <ListItem
-                    leftAvatar={<Avatar src="resource/image/rocket.png" />}
-                    primaryText="singleton-window.ts"
-                    secondaryText={
-                    <p className="secondary">
-                        ~/Dev/github.com/rhysd/Rocket/browser/singleton-window.ts
-                    </p>
-                    }
-                    secondaryTextLines={2} />
-                <ListDivider inset={true} />
-                <ListItem
-                    leftAvatar={<Avatar src="resource/image/rocket.png" />}
-                    primaryText="tray.ts"
-                    secondaryText={
-                    <p className="secondary">
-                        ~/Dev/github.com/rhysd/Rocket/browser/tray.ts
-                    </p>
-                    }
-                    secondaryTextLines={2} />
-                <ListDivider inset={true} />
-                <ListItem
-                    leftAvatar={<Avatar src="resource/image/rocket.png" />}
-                    primaryText="tsconfig.json"
-                    secondaryText={
-                    <p className="secondary">
-                        ~/Dev/github.com/rhysd/Rocket/browser/tsconfig.json
-                    </p>
-                    }
-                    secondaryTextLines={2} />
-                <ListDivider inset={true} />
-                <ListItem
-                    leftAvatar={<Avatar src="resource/image/rocket.png" />}
-                    primaryText="lib.d.ts"
-                    secondaryText={
-                    <p className="secondary">
-                        ~/Dev/github.com/rhysd/Rocket/browser/lib.d.ts
-                    </p>
-                    }
-                    secondaryTextLines={2} />
-            </List>
-        );
+        const items = this.props.candidates.map(
+                (c: Candidate, i: number) => this.renderListItem(c, 'item-id-' + i)
+            );
+        return <List>{items}</List>;
     }
 }
