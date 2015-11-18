@@ -2,6 +2,7 @@ import assign = require('object-assign');
 import * as Immutable from 'immutable';
 import {ActionType, Kind} from './actions';
 import Body from './body';
+import log from './log';
 
 const ThisWindow: GitHubElectron.BrowserWindow = global.require('remote').getCurrentWindow();
 
@@ -35,7 +36,7 @@ function receiveQueryResult(state: StateType, booster_name: string, input: strin
 }
 
 export default function root(state: StateType = init, action: ActionType) {
-    console.log('action: ', action.type);
+    log.debug('action: ', action);
     switch (action.type) {
     case Kind.AdjustWindowToContent:
         return adjustWindowToContent(state);

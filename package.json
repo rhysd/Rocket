@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "immutable": "^3.7.5",
+    "loglevel": "^1.4.0",
     "material-ui": "^0.13.2",
     "mousetrap": "^1.5.3",
     "object-assign": "^4.0.1",

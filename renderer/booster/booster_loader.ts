@@ -12,11 +12,9 @@ const DEFAULT_LOADEER_PATHS
 
 export default class BoosterLoader {
     load_paths: string[];
-    loaded: boolean;
 
     constructor(extra_load_paths: string[]) {
         this.load_paths = DEFAULT_LOADEER_PATHS.concat(extra_load_paths);
-        this.loaded = false;
     }
 
     loadFrom(pkg_path: string) {

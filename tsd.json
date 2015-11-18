@@ -40,6 +40,9 @@
     },
     "mousetrap/mousetrap.d.ts": {
       "commit": "0a6894d9ecad95abc88b00109f6f81c80b109e81"
+    },
+    "loglevel/loglevel.d.ts": {
+      "commit": "fc341765ebbb04b7109981a25dced01f488f4d94"
     }
   }
 }

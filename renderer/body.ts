@@ -1,6 +1,7 @@
 import BoosterLoader from './booster/booster_loader';
 import Booster from './booster/booster';
 import {receiveQueryResult} from './actions';
+import log from './log';
 
 export default class Body {
     loader: BoosterLoader;
@@ -13,12 +14,12 @@ export default class Body {
                 b.on('query-result', this.updateCandidates.bind(this, b))
             }
             this.boosters = boosters;
-            console.log(boosters);
+            log.debug('Registered boosters:', boosters);
         });
     }
 
     updateCandidates(booster: Booster, result: BoosterProcessQueryResult) {
-        console.log(`Result received from '${booster.name}':`, result);
+        log.debug(`Result received from '${booster.name}':`, result);
         receiveQueryResult(booster.name, result.input, result.candidates);
     }
 

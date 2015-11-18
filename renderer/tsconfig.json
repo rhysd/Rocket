@@ -15,6 +15,7 @@
     "components/app.tsx",
     "booster/booster_loader.ts",
     "booster/booster.ts",
+    "log.ts",
     "actions.ts",
     "reducers.ts",
     "body.ts",

@@ -19,6 +19,7 @@ class Context extends EventEmitter {
 const argv_len = process.argv.length;
 const context = new Context(process.argv[argv_len - 2], process.argv[argv_len - 1]);
 const BoosterClass = require(context.pkg_path);
+const log = require('loglevel');
 
 /* tslint:disable:no-unused-variable */
 const booster = new BoosterClass(context);
@@ -28,11 +29,13 @@ const booster = new BoosterClass(context);
 // Register context event emitted from booster (query result)
 
 context.on('query-result', (result: BoosterProcessQueryResult) => {
+    log.info('query-result received', result);
     // TODO: Validate the result object
     process.send({kind: 'query-result', result});
 });
 
 process.on('message', (msg: BoosterProcessMessage) => {
+    log.info(context.booster_name + ': message received', msg);
     const k = msg.kind;
     if (k === 'shutdown') {
         context.emit('shutdown');

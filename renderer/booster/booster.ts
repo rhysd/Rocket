@@ -3,6 +3,8 @@ import * as path from 'path';
 import {EventEmitter} from 'events';
 const child_process: typeof CP = global.require('child_process');
 const app: GitHubElectron.App = global.require('remote').require('app');
+import log from '../log';
+
 const engine_path = path.join(app.getAppPath(), 'build', 'child', 'booster_engine.js')
 
 export default class Booster extends EventEmitter {
@@ -16,7 +18,7 @@ export default class Booster extends EventEmitter {
             if (msg.kind === 'query-result') {
                 this.emit('query-result', msg.result);
             } else {
-                console.log(`Ignored message from booster '${name}': `, msg);
+                console.error(`Ignored unknown message from booster '${name}': `, msg);
             }
         })
     }
