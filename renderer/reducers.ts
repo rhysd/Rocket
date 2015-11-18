@@ -25,7 +25,7 @@ function adjustWindowToContent(state: StateType) {
 }
 
 function emitQuery(state: StateType, input: string) {
-    // body.query(input);
+    state.body.query(input);
     return state;
 }
 

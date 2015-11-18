@@ -16,6 +16,7 @@
     "booster/booster_loader.ts",
     "booster/booster.ts",
     "log.ts",
+    "store.ts",
     "actions.ts",
     "reducers.ts",
     "body.ts",

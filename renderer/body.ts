@@ -1,6 +1,7 @@
 import BoosterLoader from './booster/booster_loader';
 import Booster from './booster/booster';
 import {receiveQueryResult} from './actions';
+import Store from './store';
 import log from './log';
 
 export default class Body {
@@ -20,7 +21,7 @@ export default class Body {
 
     updateCandidates(booster: Booster, result: BoosterProcessQueryResult) {
         log.debug(`Result received from '${booster.name}':`, result);
-        receiveQueryResult(booster.name, result.input, result.candidates);
+        Store.dispatch(receiveQueryResult(booster.name, result.input, result.candidates));
     }
 
     query(input: string) {
