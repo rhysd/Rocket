@@ -4,9 +4,9 @@ def build(kind, path)
   puts "\033[93m#{Time.now}: #{File.basename path}\033[0m"
   success = system "rake build_#{kind}_src"
   if success
-    puts "\033[92mOK\033[0m"
+    puts "\033[92mOK\033[0m\n\n"
   else
-    puts "\033[91mFAIL\033[0m"
+    puts "\033[91mFAIL\033[0m\n\n"
   end
 end
 

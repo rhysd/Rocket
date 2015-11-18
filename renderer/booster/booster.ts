@@ -13,7 +13,7 @@ export default class Booster extends EventEmitter {
     constructor(public pkg_path: string, public name: string) {
         super();
         this.booster_process = child_process.fork(engine_path, [pkg_path, name]);
-        this.booster_process.on('close', (code: number) => log.debug(`Booster '${name}' closed: ${code}`));
+        this.booster_process.on('close', (code: number) => log.info(`Booster '${name}' closed: ${code}`));
         this.booster_process.on('message', (msg: BoosterProcessMessage) => {
             if (msg.kind === 'query-result') {
                 log.debug(`Booster '${name}' Received query result: ${msg}`);

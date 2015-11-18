@@ -21,6 +21,7 @@ export default class Input extends React.Component<Props, {}> {
     onChange(event: React.SyntheticEvent) {
         const elem = event.nativeEvent.target as HTMLInputElement;
         log.debug('<Input>: onChange', event.nativeEvent, elem.value);
+        log.info('<Input>: send query: ' + elem.value);
         this.props.dispatch(emitQuery(elem.value));
     }
 

@@ -15,11 +15,12 @@ export default class Body {
                 b.on('query-result', this.updateCandidates.bind(this, b))
             }
             this.boosters = boosters;
-            log.debug('Registered boosters:', boosters);
+            log.info('Registered boosters:', boosters);
         });
     }
 
     updateCandidates(booster: Booster, result: BoosterProcessQueryResult) {
+        log.info(`Result received ${result.candidates.length} items from '${booster.name}':`);
         log.debug(`Result received from '${booster.name}':`, result);
         Store.dispatch(receiveQueryResult(booster.name, result.input, result.candidates));
     }

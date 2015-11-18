@@ -36,6 +36,7 @@ function receiveQueryResult(state: StateType, booster_name: string, input: strin
 }
 
 export default function root(state: StateType = init, action: ActionType) {
+    log.info('action type: ', action.type);
     log.debug('action: ', action);
     switch (action.type) {
     case Kind.AdjustWindowToContent:
