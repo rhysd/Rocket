@@ -15,7 +15,7 @@ class App extends React.Component<Props, {}> {
         return (
             <div className="root">
                 <Input dispatch={dispatch}/>
-                <Candidates dispatch={dispatch} candidates={candidates}/>
+                <Candidates dispatch={dispatch} candidates={candidates} maxItems={20}/>
             </div>
         );
     }

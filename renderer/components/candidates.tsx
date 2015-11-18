@@ -9,14 +9,14 @@ import log from '../log';
 interface Props {
     dispatch: Redux.Dispatch;
     candidates: Candidate[];
+    maxItems: number;
 }
 
 export default class Candidates extends React.Component<Props, {}> {
     componentDidUpdate(prevProps: Props, prevState: {}) {
         // TODO:
         // Only when number of list items is changed, adjust window size to content.
-        // this.props.dispatch(adjustWindowToContent());
-        log.debug('<Candidates> updated!');
+        this.props.dispatch(adjustWindowToContent());
     }
     componentDidMount() {
         this.props.dispatch(adjustWindowToContent());
@@ -34,10 +34,17 @@ export default class Candidates extends React.Component<Props, {}> {
     }
 
     render() {
-        log.debug('Rendered list items: ', this.props.candidates);
-        const items = this.props.candidates.map(
-                (c: Candidate, i: number) => this.renderListItem(c, 'item-id-' + i)
-            );
+        const {candidates, maxItems} = this.props;
+        log.debug('Rendered list items: ', candidates);
+
+        const items: JSX.Element[] = [];
+        const num_items = Math.min(candidates.length, maxItems);
+        for (let i = 0; i < num_items; ++i) {
+            items.push(this.renderListItem(candidates[i], 'item-id-' + i));
+        }
+
+        log.info(`<Candidates> Render ${num_items} items`);
+
         return <List>{items}</List>;
     }
 }
