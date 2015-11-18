@@ -9,11 +9,13 @@ const ThisWindow: GitHubElectron.BrowserWindow = global.require('remote').getCur
 export interface StateType {
     body: Body;
     candidates: Immutable.Map<string, Candidate[]>;
+    booster_inputs: Immutable.Map<string, string>;
 }
 
 const init: StateType = {
     body: new Body(),
     candidates: Immutable.Map<string, Candidate[]>(),
+    booster_inputs: Immutable.Map<string, string>(),
 };
 
 function adjustWindowToContent(state: StateType) {
@@ -31,7 +33,23 @@ function emitQuery(state: StateType, input: string) {
 
 function receiveQueryResult(state: StateType, booster_name: string, input: string, candidates: Candidate[]) {
     const next_state = assign({}, state);
-    next_state.candidates = state.candidates.set(booster_name, candidates);
+
+    const prev_input = state.booster_inputs.get(booster_name);
+    if (!prev_input || prev_input !== input) {
+        next_state.candidates = state.candidates.set(booster_name, candidates);
+        next_state.booster_inputs = state.booster_inputs.set(booster_name, input);
+    } else {
+        next_state.candidates
+            = state.candidates.update(
+                    booster_name,
+                    [] as Candidate[], // default value
+                    cs => {
+                        cs.push.apply(cs, candidates);
+                        return cs;
+                    }
+                );
+    }
+
     return next_state;
 }
 
