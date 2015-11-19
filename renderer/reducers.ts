@@ -10,14 +10,12 @@ export interface StateType {
     body: Body;
     candidates: Immutable.Map<string, Candidate[]>;
     booster_inputs: Immutable.Map<string, string>;
-    focused_index: number;
 }
 
 const init: StateType = {
     body: new Body(),
     candidates: Immutable.Map<string, Candidate[]>(),
     booster_inputs: Immutable.Map<string, string>(),
-    focused_index: 0,
 };
 
 function adjustWindowToContent(state: StateType) {
@@ -40,7 +38,6 @@ function receiveQueryResult(state: StateType, booster_name: string, input: strin
     if (!prev_input || prev_input !== input) {
         next_state.candidates = state.candidates.set(booster_name, candidates);
         next_state.booster_inputs = state.booster_inputs.set(booster_name, input);
-        next_state.focused_index = 0;
     } else {
         next_state.candidates
             = state.candidates.update(

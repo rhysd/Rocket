@@ -7,16 +7,15 @@ import Candidates from './candidates';
 interface Props {
     dispatch?: Redux.Dispatch;
     candidates?: Candidate[];
-    focusedIndex?: number;
 }
 
 class App extends React.Component<Props, {}> {
     render() {
-        const {dispatch, candidates, focusedIndex} = this.props;
+        const {dispatch, candidates} = this.props;
         return (
             <div className="root">
                 <Input dispatch={dispatch}/>
-                <Candidates dispatch={dispatch} candidates={candidates} maxItems={20} focusedIndex={focusedIndex}/>
+                <Candidates dispatch={dispatch} candidates={candidates} maxItems={20}/>
             </div>
         );
     }
@@ -32,10 +31,7 @@ function select(state: StateType): Props {
         candidates.push.apply(candidates, cs);
     }
 
-    return {
-        candidates,
-        focusedIndex: state.focused_index,
-    };
+    return { candidates };
 }
 
 export default connect(select)(App);
