@@ -10,6 +10,7 @@ interface Props {
     dispatch: Redux.Dispatch;
     candidates: Candidate[];
     maxItems: number;
+    focusedIndex: number;
 }
 
 export default class Candidates extends React.Component<Props, {}> {
@@ -18,17 +19,20 @@ export default class Candidates extends React.Component<Props, {}> {
         // Only when number of list items is changed, adjust window size to content.
         this.props.dispatch(adjustWindowToContent());
     }
+
     componentDidMount() {
         this.props.dispatch(adjustWindowToContent());
     }
 
-    renderListItem(candidate: Candidate, key: string) {
+    renderListItem(candidate: Candidate, idx: number) {
         const avatar_src = candidate.iconPath || 'resource/image/rocket.png';
         const props = {
-            key,
+            key: 'item-id-' + idx,
             leftAvatar: <Avatar src={avatar_src}/>,
             primaryText: candidate.primaryText,
             secondaryText: <p className="secondary">{candidate.secondaryText}</p>,
+            innerDivStyle: this.props.focusedIndex === idx ? {backgroundColor: '#dddddd'} : undefined,
+            ref: 'focused_item',
         };
         return <ListItem {...props}/>;
     }
@@ -40,7 +44,7 @@ export default class Candidates extends React.Component<Props, {}> {
         const items: JSX.Element[] = [];
         const num_items = Math.min(candidates.length, maxItems);
         for (let i = 0; i < num_items; ++i) {
-            items.push(this.renderListItem(candidates[i], 'item-id-' + i));
+            items.push(this.renderListItem(candidates[i], i));
         }
 
         log.info(`<Candidates> Render ${num_items} items`);
