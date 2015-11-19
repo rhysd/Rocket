@@ -10,12 +10,16 @@ export interface StateType {
     body: Body;
     candidates: Immutable.Map<string, Candidate[]>;
     booster_inputs: Immutable.Map<string, string>;
+    page: number;
+    items_per_page: number;
 }
 
 const init: StateType = {
     body: new Body(),
     candidates: Immutable.Map<string, Candidate[]>(),
     booster_inputs: Immutable.Map<string, string>(),
+    page: 0,
+    items_per_page: 10,
 };
 
 function adjustWindowToContent(state: StateType) {
@@ -38,6 +42,7 @@ function receiveQueryResult(state: StateType, booster_name: string, input: strin
     if (!prev_input || prev_input !== input) {
         next_state.candidates = state.candidates.set(booster_name, candidates);
         next_state.booster_inputs = state.booster_inputs.set(booster_name, input);
+        next_state.page = 0;
     } else {
         next_state.candidates
             = state.candidates.update(
@@ -53,6 +58,12 @@ function receiveQueryResult(state: StateType, booster_name: string, input: strin
     return next_state;
 }
 
+function jumpPage(state: StateType, page: number) {
+    const next_state = assign({}, state);
+    next_state.page = page;
+    return next_state;
+}
+
 export default function root(state: StateType = init, action: ActionType) {
     log.info('action type: ', action.type);
     log.debug('action: ', action);
@@ -63,6 +74,8 @@ export default function root(state: StateType = init, action: ActionType) {
         return emitQuery(state, action.input);
     case Kind.ReceiveQueryResult:
         return receiveQueryResult(state, action.booster_name, action.input, action.candidates);
+    case Kind.JumpPage:
+        return jumpPage(state, action.page);
     default:
         break;
     }

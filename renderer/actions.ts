@@ -3,6 +3,7 @@ export enum Kind {
     AdjustWindowToContent,
     EmitQuery,
     ReceiveQueryResult,
+    JumpPage,
 };
 
 export interface ActionType {
@@ -10,6 +11,7 @@ export interface ActionType {
     input?: string;
     booster_name?: string;
     candidates?: Candidate[];
+    page?: number;
 }
 
 export function adjustWindowToContent() {
@@ -37,3 +39,11 @@ export function receiveQueryResult(booster_name: string, input: string, candidat
         candidates,
     };
 }
+
+export function jumpPage(page: number) {
+    return {
+        type: Kind.JumpPage,
+        page,
+    };
+}
+
