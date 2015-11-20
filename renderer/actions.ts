@@ -3,6 +3,7 @@ export enum Kind {
     EmitQuery,
     ReceiveQueryResult,
     JumpPage,
+    SelectItem,
 };
 
 export interface ActionType {
@@ -11,6 +12,7 @@ export interface ActionType {
     booster_name?: string;
     candidates?: Candidate[];
     page?: number;
+    item_offset?: number;
 }
 
 export function adjustWindowToContent() {
@@ -50,3 +52,10 @@ export function jumpPage(page: number) {
     };
 }
 
+export function selectItem(item_offset: number) {
+    'use strict';
+    return {
+        type: Kind.SelectItem,
+        item_offset,
+    };
+}

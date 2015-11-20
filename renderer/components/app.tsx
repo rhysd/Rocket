@@ -9,6 +9,7 @@ interface Props {
     candidates?: Candidate[];
     page?: number;
     itemsPerPage?: number;
+    maxPage?: number;
 }
 
 class App extends React.Component<Props, {}> {
@@ -17,7 +18,7 @@ class App extends React.Component<Props, {}> {
         return (
             <div className="root">
                 <Input dispatch={dispatch} page={page}/>
-                <Candidates dispatch={dispatch} candidates={candidates} page={page} itemsPerPage={itemsPerPage}/>
+                <Candidates {...this.props}/>
             </div>
         );
     }
@@ -37,6 +38,7 @@ function select(state: StateType): Props {
         candidates,
         page: state.page,
         itemsPerPage: state.items_per_page,
+        maxPage: state.max_page,
     };
 }
 

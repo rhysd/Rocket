@@ -12,6 +12,7 @@ export interface StateType {
     booster_inputs: Immutable.Map<string, string>;
     page: number;
     items_per_page: number;
+    max_page: number;
 }
 
 const init: StateType = {
@@ -20,6 +21,7 @@ const init: StateType = {
     booster_inputs: Immutable.Map<string, string>(),
     page: 0,
     items_per_page: 10,
+    max_page: 0,
 };
 
 function adjustWindowToContent(state: StateType) {
@@ -39,7 +41,7 @@ function emitQuery(state: StateType, input: string) {
 
 function receiveQueryResult(state: StateType, booster_name: string, input: string, candidates: Candidate[]) {
     'use strict';
-    const next_state = assign({}, state);
+    const next_state: StateType = assign({}, state);
 
     const prev_input = state.booster_inputs.get(booster_name);
     if (!prev_input || prev_input !== input) {
@@ -58,19 +60,26 @@ function receiveQueryResult(state: StateType, booster_name: string, input: strin
                 );
     }
 
+    next_state.max_page = Math.floor(
+        next_state.candidates.reduce((acc, cs) => acc + cs.length, 0) / state.items_per_page
+    );
+
     return next_state;
 }
 
 function jumpPage(state: StateType, new_page: number) {
     'use strict';
-    const num_pages = Math.floor(
-            state.candidates.reduce((acc, cs) => acc + cs.length, 0) / state.items_per_page
-        );
-    if (0 <= new_page && new_page <= num_pages) {
+    if (0 <= new_page && new_page <= state.max_page) {
         return assign({}, state, {page: new_page});
     } else {
         return state;
     }
+}
+
+function selectItem(state: StateType, item_offset: number) {
+    'use strict';
+    log.info('TODO: Select Item: No. ' + (state.page * state.items_per_page + item_offset));
+    return state;
 }
 
 export default function root(state: StateType = init, action: ActionType) {
@@ -86,6 +95,8 @@ export default function root(state: StateType = init, action: ActionType) {
         return receiveQueryResult(state, action.booster_name, action.input, action.candidates);
     case Kind.JumpPage:
         return jumpPage(state, action.page);
+    case Kind.SelectItem:
+        return selectItem(state, action.item_offset);
     default:
         break;
     }
