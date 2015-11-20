@@ -25,12 +25,18 @@ export default class Candidates extends React.Component<Props, {}> {
     }
 
     renderListItem(candidate: Candidate, key: string) {
-        const avatar_src = candidate.iconPath || 'resource/image/rocket.png';
+        const avatar_style = {
+            height: '48px',
+            width: '48px',
+            display: 'block',
+            position: 'absolute',
+        };
+        const avatar = candidate.imagePath ? <img src={candidate.imagePath} style={avatar_style}/> : undefined;
         const props = {
             key,
-            leftAvatar: <Avatar src={avatar_src}/>,
+            leftAvatar: avatar,
             primaryText: candidate.primaryText,
-            secondaryText: <p className="secondary">{candidate.secondaryText}</p>,
+            secondaryText: <p className="secondary-text">{candidate.secondaryText}</p>,
         };
         return <ListItem {...props}/>;
     }
@@ -41,7 +47,11 @@ export default class Candidates extends React.Component<Props, {}> {
 
         const start_idx = page * itemsPerPage;
         const items: JSX.Element[] = [];
-        const num_items = Math.min((candidates.length - 1) - start_idx, itemsPerPage);
+        const num_items = Math.min(candidates.length - start_idx, itemsPerPage);
+        if (num_items === 0) {
+            return <List/>;
+        }
+
         for (let i = 0; i < num_items; ++i) {
             items.push(this.renderListItem(candidates[i + start_idx], 'item-id-' + i));
         }
@@ -49,10 +59,17 @@ export default class Candidates extends React.Component<Props, {}> {
         // TODO: Display 'n/m' (n = current page, m = max page)
         log.info(`<Candidates> Render ${num_items} items`);
 
-        const page_count = `${page + 1}/${candidates.length / itemsPerPage + 1}`;
+        const page_count = `${page + 1}/${Math.floor(candidates.length / itemsPerPage + 1)}`;
+        const badge_style = {
+            backgroundColor: '#00bcd4',
+            borderRadius: '4px',
+            padding: '0px 6px',
+            width: 'auto',
+            marginRight: '20px',
+        };
 
         return (
-            <Badge  badgeContent={page_count}>
+            <Badge secondary badgeContent={page_count} badgeStyle={badge_style}>
                 <List>{items}</List>
             </Badge>
         );

@@ -58,15 +58,19 @@ body {
 }
 
 .root {
-  width: calc(100% - 40px);
-  padding: 20px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   opacity: 1;
 }
 
-.secondary {
+.search-input {
+  padding: 10px 20px;
+  width: auto;
+}
+
+.secondary-text {
   overflow: hidden;
   text-overflow: ellipsis;
 }

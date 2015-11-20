@@ -27,13 +27,15 @@ export default class Input extends React.Component<Props, {}> {
 
     render() {
         return (
-            <TextField
-                hintText="Input..."
-                fullWidth
-                onKeyDown={this.onKeyDown.bind(this)}
-                onChange={this.onChange.bind(this)}
-                ref="body"
-            />
+            <div className="search-input">
+                <TextField
+                    hintText="Input..."
+                    fullWidth
+                    onKeyDown={this.onKeyDown.bind(this)}
+                    onChange={this.onChange.bind(this)}
+                    ref="body"
+                />
+            </div>
         );
     }
 }

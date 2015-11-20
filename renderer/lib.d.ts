@@ -27,7 +27,7 @@ interface String {
 interface Candidate {
     primaryText: string;
     secondaryText?: string;
-    iconPath?: string;
+    imagePath?: string;
 }
 
 interface BoosterProcessQueryResult {
