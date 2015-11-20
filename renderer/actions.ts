@@ -1,4 +1,3 @@
-
 export enum Kind {
     AdjustWindowToContent,
     EmitQuery,
@@ -15,6 +14,7 @@ export interface ActionType {
 }
 
 export function adjustWindowToContent() {
+    'use strict';
     return (dispatch: Redux.Dispatch) => {
         setImmediate(() => dispatch({
             type: Kind.AdjustWindowToContent
@@ -23,6 +23,7 @@ export function adjustWindowToContent() {
 }
 
 export function emitQuery(input: string) {
+    'use strict';
     return (dispatch: Redux.Dispatch) => {
         setImmediate(() => dispatch({
             type: Kind.EmitQuery,
@@ -32,6 +33,7 @@ export function emitQuery(input: string) {
 }
 
 export function receiveQueryResult(booster_name: string, input: string, candidates: Candidate[]) {
+    'use strict';
     return {
         type: Kind.ReceiveQueryResult,
         booster_name,
@@ -41,6 +43,7 @@ export function receiveQueryResult(booster_name: string, input: string, candidat
 }
 
 export function jumpPage(page: number) {
+    'use strict';
     return {
         type: Kind.JumpPage,
         page,

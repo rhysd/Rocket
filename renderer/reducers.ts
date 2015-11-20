@@ -23,6 +23,7 @@ const init: StateType = {
 };
 
 function adjustWindowToContent(state: StateType) {
+    'use strict';
     const bottom_frame = document.querySelector('.frame-bottom') as HTMLDivElement;
     const height = bottom_frame.offsetTop + bottom_frame.clientHeight;
     const width = ThisWindow.getSize()[0];
@@ -31,11 +32,13 @@ function adjustWindowToContent(state: StateType) {
 }
 
 function emitQuery(state: StateType, input: string) {
+    'use strict';
     state.body.query(input);
     return state;
 }
 
 function receiveQueryResult(state: StateType, booster_name: string, input: string, candidates: Candidate[]) {
+    'use strict';
     const next_state = assign({}, state);
 
     const prev_input = state.booster_inputs.get(booster_name);
@@ -59,12 +62,14 @@ function receiveQueryResult(state: StateType, booster_name: string, input: strin
 }
 
 function jumpPage(state: StateType, page: number) {
+    'use strict';
     const next_state = assign({}, state);
     next_state.page = page;
     return next_state;
 }
 
 export default function root(state: StateType = init, action: ActionType) {
+    'use strict';
     log.info('action type: ', action.type);
     log.debug('action: ', action);
     switch (action.type) {

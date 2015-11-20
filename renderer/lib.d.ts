@@ -9,10 +9,10 @@ declare namespace NodeJS {
 }
 
 // DefinitelyTyped/redux-thunk/redux-thunk.d.ts is broken.
-declare module "redux-thunk" {
+declare module 'redux-thunk' {
     import { Middleware } from 'redux';
     interface Thunk extends Middleware { }
-    var thunk: Thunk;
+    const thunk: Thunk;
     export = thunk;
 }
 

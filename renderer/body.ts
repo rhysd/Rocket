@@ -12,7 +12,7 @@ export default class Body {
         this.loader = new BoosterLoader(extra_load_paths);
         this.loader.loadAll().then((boosters: Booster[]) => {
             for (const b of boosters) {
-                b.on('query-result', this.updateCandidates.bind(this, b))
+                b.on('query-result', this.updateCandidates.bind(this, b));
             }
             this.boosters = boosters;
             log.info('Registered boosters:', boosters);

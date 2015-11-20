@@ -10,7 +10,7 @@ if (process.argv.length < 2) {
 
 import {EventEmitter} from 'events';
 import log = require('loglevel');
-log.setLevel('debug')
+log.setLevel('debug');
 
 class Context extends EventEmitter {
     constructor(public pkg_path: string, public booster_name: string) {

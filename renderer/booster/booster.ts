@@ -5,7 +5,7 @@ const child_process: typeof CP = global.require('child_process');
 const app: GitHubElectron.App = global.require('remote').require('app');
 import log from '../log';
 
-const engine_path = path.join(app.getAppPath(), 'build', 'child', 'booster_engine.js')
+const engine_path = path.join(app.getAppPath(), 'build', 'child', 'booster_engine.js');
 
 export default class Booster extends EventEmitter {
     booster_process: CP.ChildProcess;
@@ -21,7 +21,7 @@ export default class Booster extends EventEmitter {
             } else {
                 log.error(`Ignored unknown message from booster '${name}': `, msg);
             }
-        })
+        });
     }
 
     // Note:
