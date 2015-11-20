@@ -26,3 +26,11 @@ This aims:
 - 'Body' provides various actions for the selected item; open with browser, open with app, to clipboard, to text input, to standard output, and so on.  'Booster' provides the list of actions when reporting the curated result to 'Body'
 - This app can be used as resident application(toggle with hot key) or CLI app (like percol/peco).
 
+## Boosters
+
+- [rocket-booster-files](https://github.com/rhysd/rocket-booster-files) : Select and open a file
+
+## TODO memo
+
+- Add animation on changing pages
+- Notify the selected item to booster to start action
