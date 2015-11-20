@@ -1,10 +1,11 @@
 import * as React from 'react';
 import TextField = require('material-ui/lib/text-field');
-import {emitQuery} from '../actions';
+import {emitQuery, jumpPage} from '../actions';
 import log from '../log';
 
 interface Props {
     dispatch: Redux.Dispatch;
+    page: number;
 }
 
 export default class Input extends React.Component<Props, {}> {
@@ -16,6 +17,34 @@ export default class Input extends React.Component<Props, {}> {
         // TODO
         log.debug('<Input>: onKeyDown', event);
         log.debug('<Input>: onKeyDown', event.nativeEvent);
+        const e = event.nativeEvent as KeyboardEvent;
+
+        // Kill tab key to prevent focus from moving
+        if (e && e.keyCode === 0x09) {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+        }
+
+        if (e && e.ctrlKey) {
+            const c = String.fromCharCode(e.keyCode);
+            let key_ignored = false;
+            switch(c) {
+                case 'N':
+                    this.props.dispatch(jumpPage(this.props.page + 1));
+                    break;
+                case 'P':
+                    this.props.dispatch(jumpPage(this.props.page - 1));
+                    break;
+                default:
+                    log.debug('Ignored key: ctrl+' + c);
+                    key_ignored = true;
+                    break;
+            }
+            if (!key_ignored) {
+                e.preventDefault();
+            }
+        }
     }
 
     onChange(event: React.SyntheticEvent) {

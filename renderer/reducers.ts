@@ -61,11 +61,16 @@ function receiveQueryResult(state: StateType, booster_name: string, input: strin
     return next_state;
 }
 
-function jumpPage(state: StateType, page: number) {
+function jumpPage(state: StateType, new_page: number) {
     'use strict';
-    const next_state = assign({}, state);
-    next_state.page = page;
-    return next_state;
+    const num_pages = Math.floor(
+            state.candidates.reduce((acc, cs) => acc + cs.length, 0) / state.items_per_page
+        );
+    if (0 <= new_page && new_page <= num_pages) {
+        return assign({}, state, {page: new_page});
+    } else {
+        return state;
+    }
 }
 
 export default function root(state: StateType = init, action: ActionType) {

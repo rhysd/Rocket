@@ -7,15 +7,17 @@ import Candidates from './candidates';
 interface Props {
     dispatch?: Redux.Dispatch;
     candidates?: Candidate[];
+    page?: number;
+    itemsPerPage?: number;
 }
 
 class App extends React.Component<Props, {}> {
     render() {
-        const {dispatch, candidates} = this.props;
+        const {dispatch, candidates, page, itemsPerPage} = this.props;
         return (
             <div className="root">
-                <Input dispatch={dispatch}/>
-                <Candidates dispatch={dispatch} candidates={candidates} page={0} itemsPerPage={10}/>
+                <Input dispatch={dispatch} page={page}/>
+                <Candidates dispatch={dispatch} candidates={candidates} page={page} itemsPerPage={itemsPerPage}/>
             </div>
         );
     }
@@ -31,7 +33,11 @@ function select(state: StateType): Props {
         candidates.push.apply(candidates, cs);
     }
 
-    return { candidates };
+    return {
+        candidates,
+        page: state.page,
+        itemsPerPage: state.items_per_page,
+    };
 }
 
 export default connect(select)(App);
