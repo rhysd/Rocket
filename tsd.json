@@ -8,12 +8,6 @@
     "node/node.d.ts": {
       "commit": "4f7b7e01d3a9622bfab0bef469e169529e60c66b"
     },
-    "github-electron/github-electron.d.ts": {
-      "commit": "4f7b7e01d3a9622bfab0bef469e169529e60c66b"
-    },
-    "github-electron/github-electron-main.d.ts": {
-      "commit": "4f7b7e01d3a9622bfab0bef469e169529e60c66b"
-    },
     "github-electron/electron-prebuilt.d.ts": {
       "commit": "4f7b7e01d3a9622bfab0bef469e169529e60c66b"
     },

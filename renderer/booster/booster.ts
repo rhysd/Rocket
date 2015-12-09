@@ -2,7 +2,7 @@ import * as CP from 'child_process';
 import * as path from 'path';
 import {EventEmitter} from 'events';
 const child_process: typeof CP = global.require('child_process');
-const app: GitHubElectron.App = global.require('remote').require('app');
+const app = global.require('electron').remote.require('app');
 import log from '../log';
 
 const engine_path = path.join(app.getAppPath(), 'build', 'child', 'booster_engine.js');

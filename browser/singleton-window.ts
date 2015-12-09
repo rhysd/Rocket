@@ -1,5 +1,4 @@
-import * as BrowserWindow from 'browser-window';
-import * as GlobalShortcut from 'global-shortcut';
+import {BrowserWindow, globalShortcut} from 'electron';
 import {EventEmitter} from 'events';
 
 export default class SingletonWindow extends EventEmitter {
@@ -14,7 +13,7 @@ export default class SingletonWindow extends EventEmitter {
         this.native_window.setVisibleOnAllWorkspaces(true);
         this.native_window.once('closed', () => {
             if (this.hotkey) {
-                GlobalShortcut.unregister(this.hotkey);
+                globalShortcut.unregister(this.hotkey);
             }
             this.native_window = null;
             this.emit('closed');
@@ -27,9 +26,9 @@ export default class SingletonWindow extends EventEmitter {
         this.hotkey = null;
     }
 
-    loadUrl(url: string) {
+    loadURL(url: string) {
         this.native_window.webContents.once('dom-ready', () => this.emit('dom-ready'));
-        this.native_window.loadUrl(url);
+        this.native_window.loadURL(url);
         this.native_window.center();
     }
 
@@ -65,9 +64,9 @@ export default class SingletonWindow extends EventEmitter {
 
     registerHotKey(accelerator: string) {
         if (this.hotkey) {
-            GlobalShortcut.unregister(this.hotkey);
+            globalShortcut.unregister(this.hotkey);
         }
-        GlobalShortcut.register(accelerator, () => this.toggle());
+        globalShortcut.register(accelerator, () => this.toggle());
         this.hotkey = accelerator;
     }
 }

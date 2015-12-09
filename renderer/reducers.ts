@@ -4,7 +4,7 @@ import {ActionType, Kind} from './actions';
 import Body from './body';
 import log from './log';
 
-const ThisWindow: GitHubElectron.BrowserWindow = global.require('remote').getCurrentWindow();
+const ThisWindow = global.require('electron').remote.getCurrentWindow();
 
 export interface StateType {
     body: Body;

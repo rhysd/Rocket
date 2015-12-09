@@ -3,7 +3,7 @@ import * as FS from 'fs';
 const fs: typeof FS  = global.require('fs');
 import Booster from './booster';
 
-const app: GitHubElectron.App = global.require('remote').require('app');
+const app = global.require('electron').remote.require('app');
 
 const DEFAULT_LOADEER_PATHS
     = global.module.paths

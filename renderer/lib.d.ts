@@ -1,12 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
+/// <reference path="../typings/github-electron.d.ts" />
 /// <reference path="../node_modules/immutable/dist/immutable.d.ts" />
-
-declare namespace NodeJS {
-    interface Global {
-        module: NodeModule;
-        require(m: string): any;
-    }
-}
 
 // DefinitelyTyped/redux-thunk/redux-thunk.d.ts is broken.
 declare module 'redux-thunk' {
@@ -39,5 +33,16 @@ interface BoosterProcessMessage {
     kind: string;
     input?: string;
     result?: BoosterProcessQueryResult;
+}
+
+interface NodeRequireFunction {
+    (id: string): any;
+}
+
+declare namespace NodeJS {
+    interface Global {
+        module: NodeModule;
+        require: NodeRequireFunction;
+    }
 }
 

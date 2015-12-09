@@ -1,6 +1,7 @@
 /node_modules
 /npm-debug.log
 /app.asar
-/typings
+/typings/*
+!/typings/github-electron.d.ts
 /build
 /renderer/out

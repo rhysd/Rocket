@@ -1,5 +1,5 @@
 import * as path from 'path';
-import * as app from 'app';
+import {app} from 'electron';
 import SingletonWindow from './singleton-window';
 import setupTray from './tray';
 
@@ -17,7 +17,7 @@ app.on('ready', () => {
     w.once('closed', () => app.quit());
     w.once('dom-ready', () => w.getWebContents().openDevTools({detach: true}));
 
-    w.loadUrl(index_html);
+    w.loadURL(index_html);
     w.registerHotKey('Ctrl+Space');
 
     setupTray(w);

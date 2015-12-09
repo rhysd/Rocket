@@ -1,6 +1,4 @@
-import * as Tray from 'tray';
-import * as Menu from 'menu';
-import * as app from 'app';
+import {Tray, Menu, app} from 'electron';
 import SingletonWindow from './singleton-window';
 import {join} from 'path';
 

@@ -1,5 +1,5 @@
 import log = require('loglevel');
-export const debug_flag: boolean = global.require('remote').getGlobal('debug');
+export const debug_flag: boolean = global.require('electron').remote.getGlobal('debug');
 
 // TODO: Set log level to 'warn' on product
 
